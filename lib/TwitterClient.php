@@ -497,7 +497,7 @@ class TwitterClient
         'authorization' => sprintf('Bearer %s', $this->authorization),
         'x-guest-token' => $this->data['guest_token'] ?? null,
         'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-        'cookie' => 'auth_token=ТВОЙ_ТОКЕН', // <<< СЮДА ВСТАВЛЯЕШЬ
+        'cookie' => 'auth_token=196104b69c94d2ed1178e129bd3f32b1baa82b68', // <<< СЮДА ВСТАВЛЯЕШЬ
     ];
 
     if (isset($oauth)) {
@@ -513,4 +513,5 @@ class TwitterClient
     }
 
     return $headers2;
-}
+}}
+
