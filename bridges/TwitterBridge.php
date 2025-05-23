@@ -3,8 +3,6 @@
 class TwitterBridge extends BridgeAbstract
 {
     const NAME = 'Twitter Bridge';
-    const EXTRA_REQUEST_HEADERS = [
-    'Cookie: auth_token=196104b69c94d2ed1178e129bd3f32b1baa82b68'];
     const URI = 'https://twitter.com/';
     const API_URI = 'https://api.twitter.com';
     const GUEST_TOKEN_USES = 100;
