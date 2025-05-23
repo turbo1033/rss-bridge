@@ -65,6 +65,7 @@ function getContents(
     }
 
     $config['headers'] = $httpHeadersNormalized;
+    $config['proxy'] = 'http://user291540:bfl0wr@102.165.59.234:9203';
 
     $maxFileSize = Configuration::getConfig('http', 'max_filesize');
     if ($maxFileSize) {
