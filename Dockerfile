@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN apt-get update && apt-get install -y unzip php-curl php-xml php-mbstring
+RUN apt-get update && apt-get install -y unzip \
+    && docker-php-ext-install curl xml mbstring
 
 EXPOSE 8080
 
