@@ -492,18 +492,25 @@ class TwitterClient
     }
 
     private function createHttpHeaders($oauth = null): array
-    {
-        $headers = [
-            'authorization' => sprintf('Bearer %s', $this->authorization),
-            'x-guest-token' => $this->data['guest_token'] ?? null,
-        ];
-        if (isset($oauth)) {
-            $headers['authorization'] = $oauth;
-            unset($headers['x-guest-token']);
-        }
-        foreach ($headers as $key => $value) {
-            $headers2[] = sprintf('%s: %s', $key, $value);
-        }
-        return $headers2;
+{
+    $headers = [
+        'authorization' => sprintf('Bearer %s', $this->authorization),
+        'x-guest-token' => $this->data['guest_token'] ?? null,
+        'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'cookie' => 'auth_token=ТВОЙ_ТОКЕН', // <<< СЮДА ВСТАВЛЯЕШЬ
+    ];
+
+    if (isset($oauth)) {
+        $headers['authorization'] = $oauth;
+        unset($headers['x-guest-token']);
+        unset($headers['cookie']); // OAuth не юзает куки
     }
+
+    $headers2 = [];
+    foreach ($headers as $key => $value) {
+        if ($value !== null)
+            $headers2[] = sprintf('%s: %s', $key, $value);
+    }
+
+    return $headers2;
 }
